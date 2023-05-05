@@ -1,0 +1,49 @@
+Suppose I wanted to build a calendar application. This application would allow the user to store events by inputting a title date and description on one page and store this information using Node.js routes. This application would then display a list of the events on a separate page. These two pages can be navigated using a navigation bar. How would I structure this application? S
+
+
+
+  my-calendar-app/
+├── api/
+│   ├── config/
+│   │   └── config.json
+│   ├── controllers/
+│   │   ├── events.js
+│   │   └── index.js
+│   ├── models/
+│   │   ├── models.js
+│   │   └── index.js
+│   └── app.js
+├── client/
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── favicon.ico
+│   │   └── manifest.json
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── EventModal.js
+│   │   ├── pages/
+│   │   │   ├── Calendar.js
+│   │   │   ├── EventForm.js
+│   │   │   ├── EventModal.js
+│   │   │   └── Navbar.js
+│   │   ├── App.js
+│   │   ├── index.js
+│   │   └── index.css
+│   └── package.json
+├── node_modules/
+├── .env
+├── package.json
+└── README.md
+
+Here's a brief overview of what each directory and file does:
+
+node_modules: This directory contains all the dependencies installed by npm.
+public: This directory contains the public assets of your React application, such as the index.html file that is served to the client and the favicon.ico file for the browser tab.
+src: This directory contains the source code of your React application, including the components directory where you'll define your React components, and the index.js file where you'll render your React app.
+components: This directory contains the React components that make up your calendar application, including the Calendar component, which displays the calendar and events, and the EventForm and EventModal components, which allow users to create and edit events.
+App.js: This is the main component of your React application that renders your Navbar and Calendar components.
+index.js: This file renders your React app and mounts it to the root element in your index.html file.
+index.css: This file contains the CSS styles for your React application.
+server: This directory contains the server-side code for your application, including the index.js file that sets up your Express server, the db.js file that connects to your PostgreSQL database, and the events.js file that defines the API endpoints for your calendar events.
+package.json: This file contains the metadata for your project, including its dependencies and scripts.
+README.md: This file contains information about your project and how to use it.
