@@ -9,6 +9,7 @@ function ShowEventPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   let params = useParams();
+  
 
   useEffect(() => {
     async function getData() {

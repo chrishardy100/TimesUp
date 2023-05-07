@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
-import Events from "./pages/Events";
+import Calendar from "./pages/Calendar";
 import ShowEventPage from "./pages/ShowEventPage";
 import EventForm from "./pages/EventForm";
 
@@ -19,9 +19,6 @@ function Navigation(props) {
               Form
             </NavLink>
           </li>
-          <li className="nav-item">
-
-          </li>
         </ul>
       </div>
     </nav>
@@ -35,7 +32,7 @@ function App() {
       <div className="container-xl text-center">
         <div className="row justify-content-center">
           <Routes>
-            <Route path="/" element={<Events />} />
+            <Route path="/" element={<Calendar />} />
             <Route path="/events/:id" element={<ShowEventPage />} />
             <Route path="/events/new" element={<EventForm />} />
 
