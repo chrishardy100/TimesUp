@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const { id, title, date, description } = req.body;
+  const { title, date, description } = req.body;
 
   Event.create({ title, date, description })
     .then((newEvent) => {
@@ -62,6 +62,16 @@ router.delete("/:id", (req, res) => {
     res.sendStatus(204);
   });
 });
+// router.deleteAll("/", (req, res) => {
+//   Event.destroy({
+//     where: {},
+//     truncate: true
+//   }).then(() => {
+//     res.sendStatus(204);
+//   }).catch((err) => {
+//     res.status(400).json(err);
+//   });
+// });
 
 module.exports = router;
  

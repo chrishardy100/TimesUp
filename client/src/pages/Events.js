@@ -16,8 +16,7 @@ function Events() {
   return (
     <div>
       <h1>My Events</h1>
-      {events.map(event => <EventCard /*key*/ id={event.id} title={event.title} date={event.date} description={event.description} />)}
-      console.log(id);
+      {events.map(event => <EventCard key={event.id} id={event.id} title={event.title} date={event.date} description={event.description} />)}
     </div>
   );
 }
