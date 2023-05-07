@@ -2,18 +2,17 @@ import React, { useState } from 'react';
 
 function EventForm() {
   const [title, setTitle] = useState('');
-  const [start, setStart] = useState('');
-  const [end, setEnd] = useState('');
-  const [location, setLocation] = useState('');
+  const [date, setDate] = useState('');
+  const [description, setDescription] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
 
     // Create new event object
-    const newEvent = { title, start, end, location };
+    const newEvent = { title, date, description };
 
     // Send POST request to API with new event
-    fetch('/api/controllers/events', {
+    fetch('/api/events', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,9 +25,8 @@ function EventForm() {
 
     // Clear form inputs
     setTitle('');
-    setStart('');
-    setEnd('');
-    setLocation('');
+    setDate('');
+    setDescription('');
   }
 
   return (
@@ -48,39 +46,27 @@ function EventForm() {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="start" className="form-label">
-            Start Date
+          <label htmlFor="date" className="form-label">
+            Date
           </label>
           <input
             type="date"
             className="form-control"
-            id="start"
-            value={start}
-            onChange={(e) => setStart(e.target.value)}
+            id="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="end" className="form-label">
-            End Date
-          </label>
-          <input
-            type="date"
-            className="form-control"
-            id="end"
-            value={end}
-            onChange={(e) => setEnd(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="location" className="form-label">
-            Location
+          <label htmlFor="description" className="form-label">
+            Description
           </label>
           <input
             type="text"
             className="form-control"
-            id="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary">

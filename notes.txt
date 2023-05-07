@@ -10,21 +10,18 @@ Suppose I wanted to build a calendar application. This application would allow t
 │   │   ├── events.js
 │   │   └── index.js
 │   ├── models/
-│   │   ├── models.js
+│   │   ├── Event.js
 │   │   └── index.js
 │   └── app.js
 ├── client/
 │   ├── public/
-│   │   ├── index.html
-│   │   ├── favicon.ico
-│   │   └── manifest.json
+│   │   └── index.html
 │   ├── src/
 │   │   ├── components/
-│   │   │   └── EventModal.js
+│   │   │   └── EventCard.js
 │   │   ├── pages/
 │   │   │   ├── Calendar.js
 │   │   │   ├── EventForm.js
-│   │   │   ├── EventModal.js
 │   │   │   └── Navbar.js
 │   │   ├── App.js
 │   │   ├── index.js

@@ -1,36 +1,39 @@
-'use strict';
-const { Model } = require('sequelize');
+"use strict";
+const { Model, DataTypes } = require("sequelize");
+const { v4: uuidv4 } = require('uuid'); // Import the uuid library
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
   class Event extends Model {}
 
   Event.init(
     {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: () => uuidv4(), // Generate a new uuid for each new event
+        primaryKey: true,
+      },
       title: {
+        
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      start: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-      end: {
-        type: DataTypes.DATE,
         allowNull: false,
       },
       description: {
         type: DataTypes.TEXT,
-        allowNull: true,
+        allowNull: false,
+      },
+      date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: 'Event',
+      modelName: "Event",
     }
   );
 
   Event.associate = (models) => {
-    // associations can be defined here
+    // Define any associations here
   };
 
   return Event;
