@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import Calendar from "./pages/Calendar";
 import ShowEventPage from "./pages/ShowEventPage";
 import EventForm from "./pages/EventForm";
+import EventsForDay from "./pages/EventsForDay";
 
 import "./App.css";
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/" element={<Calendar />} />
             <Route path="/events/:id" element={<ShowEventPage />} />
             <Route path="/events/new" element={<EventForm />} />
+            <Route path="/events/day/:date" component={EventsForDay} />
 
           </Routes>
         </div>

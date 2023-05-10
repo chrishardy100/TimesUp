@@ -62,16 +62,7 @@ router.delete("/:id", (req, res) => {
     res.sendStatus(204);
   });
 });
-// router.deleteAll("/", (req, res) => {
-//   Event.destroy({
-//     where: {},
-//     truncate: true
-//   }).then(() => {
-//     res.sendStatus(204);
-//   }).catch((err) => {
-//     res.status(400).json(err);
-//   });
-// });
+
 
 module.exports = router;
  

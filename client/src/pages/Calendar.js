@@ -1,37 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list';
+import React, { useEffect, useState } from "react";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import axios from "axios";
 
-function Events() {
+const Calendar = () => {
+  const [selectedDate, setSelectedDate] = useState(null);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    fetch('/api/events')
-      .then(res => res.json())
-      .then(data => setEvents(data))
-      .catch(err => console.log(err));
+    axios.get("/api/events").then((response) => {
+      setEvents(
+        response.data.map((event) => ({
+          id: event.id,
+          title: event.title,
+          start: event.date,
+          description: event.description,
+        }))
+      );
+    });
   }, []);
 
-  const eventSources = [
-    {
-      events,
-      color: '#378006',
-      textColor: 'white'
-    }
-  ];
+  const handleEventClick = (info) => {
+    const event = info.event;
+    alert(`Event: ${event.title}\nDescription: ${event.extendedProps.description}`);
+  };
+
+  const handleDateClick = (info) => {
+    const dateStr = info.dateStr;
+    window.location.href = `/events/day/${dateStr}`;
+  };
 
   return (
     <div>
-      <h1>My Calendar</h1>
       <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, listPlugin]}
+        plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
-        eventSources={eventSources}
+        events={events}
+        dateClick={handleDateClick}
+        eventClick={handleEventClick}
       />
     </div>
   );
-}
+};
 
-export default Events;
+export default Calendar;
